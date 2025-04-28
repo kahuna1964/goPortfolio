@@ -1,0 +1,99 @@
+Functions
+=========
+
+Note: By default, Go passes parameters by value (a copy to the function)
+
+
+Scope
+-----
+
+Just like variables, scope depends on the capitalization.
+
+func add () - not exportable (private to the package)
+func Add () - exportable (public - visible in all packages)
+
+
+Definition
+----------
+
+func <Name/name>({paramName paramType}...) returnType {
+	<Function code...>
+}
+
+ie:
+
+func add(a int, b int) int {
+	return a + b
+}
+
+or
+
+func add(a, b int) int {
+	return a + b
+}
+
+var result int = add(3, 5)
+
+
+Multiple return values
+----------------------
+
+func calcSumAndProduct (a, b int) (int, int) {
+	return a + b, a * b
+}
+
+var s, p int = calcSumAndProduct(3, 6)
+
+
+Passing parameters by Reference
+===============================
+
+type Person struct {
+	Name string
+	Age	int
+}
+person := Person{Name: "Jamie", Age: 61}
+
+fmt.Println("name before:", person.Name)
+modifyPersonName(&person)                      (pass the address of the person)
+fmt.Println("name after:", person.Name)
+
+
+func modifyPersonName(person *Person){        (Person is now a pointer to a Person)
+	person.Name = "Smith"
+	fmt.Println("side scope: new name ", person.Name)
+}
+
+&var -> address or pointer to var
+*var -> this is a pointer to the var
+
+var name := "Jamie"
+var ptr := &Name
+*ptr = "bob" -> name = bob
+
+
+Note: pass by reference if after the function you need the modifed values to pass along to another function.
+
+
+
+Functions attached to a struct
+==============================
+
+Go does not use classes.  Instead, it uses structs, and struct methods.
+
+See 07 structs.txt to see more on structs
+
+You can create a function on a struct, only available in/for the defined struct.
+
+type Person struct {
+	Name string
+	Age	int
+}
+
+func (p *Person) itsYourBirthday() {
+	p.Age ++
+}
+
+person.itsYourBirthday()
+fmt.Println("Age:", person.Age) -> Age: 62
+	

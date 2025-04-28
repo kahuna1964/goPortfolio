@@ -1,0 +1,89 @@
+Variables
+=========
+
+Use camelCase for variable names, where the first word is lowercase, and subsequent words 
+start with an uppercase letter (e.g., userName, productID).
+
+Treat acronyms as single words, using all uppercase letters (e.g., APIClient, HTTPRequest)
+or all lowercase letters (e.g., apiClient, httpRequest), depending on whether the variable
+is exported or not.
+
+
+
+Exported vs. Unexported
+-----------------------
+
+Exported variables (accessible outside the package) begin with an uppercase letter (e.g., ProductName).
+Unexported variables (accessible only within the package) begin with a lowercase letter (e.g., itemCount).
+
+
+
+Ways to declare
+---------------
+
+1. var name string = "Jamie" (direct)
+
+2. age := 61 (inferred)
+
+3. var city string (deferred)
+
+4. var country, continent string "USA", "North America" (multiple)
+
+5. var (
+	isEmployed bool = true
+	salare int = 75000
+	position string = "developer"
+   )
+
+
+
+Default values
+==============
+
+Values of unassigned but declared variables (like 4D, not null)
+variables must be used in code in order to compile
+
+var (
+	defaultInt int
+	defaultFloat float64
+	defaultString string
+	defaultBool bool
+)
+
+so values are 0, 0.0, "", false
+
+
+Constants
+=========
+
+const pi = 3.14  (cannot be reassigned)
+
+const (
+	Monday = 1
+	Tuesday = 2
+)
+
+
+Enums
+=====
+Go doesn't support enums
+
+Use this instead:
+
+const (
+	Jan int = iota +1
+	Feb
+	Mar
+	Apr
+	May
+	June
+	July
+	Aug
+	Sep
+	Oct
+	Nov
+	Dec
+)
+
+Jan starts at 1, and Dec will be 12.
+

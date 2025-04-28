@@ -1,0 +1,85 @@
+Control Structures
+==================
+
+
+if
+--
+
+
+age := 30
+
+if age >= 18 {
+	fmt.Println("you are an adult")
+} else if age >= 13 {
+	fmt.Println("you are a teenager")
+} else {
+	fmt.Println("you are a chile")
+}
+
+
+switch
+------
+no "break", not needed.  Works like 4D
+
+day := "Tuesday"
+
+switch day {
+	case "Monday":
+		fmt.Println("Start of the week")
+	case "Tuesday", "Wednesday", "Thursday":
+		fmt.Println("Middle of the week")
+	case "Friday":
+		fmt.Println("TGIF")
+	default:
+		fmt.Println("Its the weekend")
+}
+
+
+For Loops
+=========
+
+for i := 0; 9 < 5; i++ {
+	fmt.Printf("i =  %d\n", i)
+}
+
+
+While loops
+===========
+
+There is no while, use this form of for Loop instead
+
+counter := 0
+for counter < 3 {
+	fmt.Printf("i =  %d\n", i)
+	counter ++
+}
+
+
+Variable Loop
+-------------
+
+This form of the for loop will be infinite, so we need a break to get out of it
+
+counter := 0
+for {
+	fmt.Printf("counter =  %d\n", counter)
+	counter++
+	if(counter>6) {
+		break;
+	}
+
+}
+
+
+Iterations
+==========
+
+To interate over an array or slice...
+
+numbers := [5] int{1, 2, 3, 4, 5}
+
+for index, value := range numbers {
+	fmt.Printf("index %d and value %d", index, value)
+}
+
+

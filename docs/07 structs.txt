@@ -1,0 +1,57 @@
+Structs
+=======
+
+Structures, a data type that can hold/pass data.  Like a variable, or object.
+
+To create a structure of a person, create the type as:
+
+type Person struct {
+	Name string
+	Age	int
+}
+
+Defined struct
+--------------
+person := Person{Name: "Jamie", Age: 61}
+fmt.Printf("This is our person %v\n", person) -> This is our person {Jamie 61}
+fmt.Printf("This is our person %+v\n", person) -> This is our person {Name:Jamie Age:61}
+
+
+
+Anonymous struct
+----------------
+employee := struct {
+	name string
+	id   int
+}{
+	name: "Alice",
+	id:   123,
+}
+
+fmt.Printf("This is our employee %v\n", employee) -> This is our employee {Alice 123}
+fmt.Printf("This is our employee %+v\n", employee) -> This is our employee {name:Alice id:123}
+
+
+
+Nested struct
+-------------
+
+type Address struct {
+	Street string
+	city string
+}
+
+type Contact {
+	Name string
+	Address Address
+	Phone string
+}
+
+person := Contact {
+	Name: "John",
+	Address: Address {
+		Street: "123 Oak Street"
+		City: "Phoenix"
+	},
+	Phone: "602 288-7295"
+}

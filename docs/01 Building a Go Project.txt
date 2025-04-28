@@ -1,0 +1,92 @@
+1. create folder for the project
+
+2. terminal, cd into it
+	% go mod init <name>
+	% touch main.go
+	folder now contains go.mod & main.go
+
+3. Open folder in VS Code (have the GO extension installed)
+
+4. Setup the main.go file with this:
+
+	package main
+	
+	import (
+		"fmt"
+	)
+	
+	func main() {
+		fmt.Println("hello World")
+	}
+
+5. Run it, % go run main.go
+
+6. To build the app
+	% go build -o <appName> main.go
+	% go build -o HelloWorld main.go (this created app, "HellowWorld")
+	
+	to run this from there terminal
+	
+	% ./HelloWorld
+	
+	You can also dobule click it from the finder (MAC)
+	
+7. Lets be sure we don't have to run the code all the time, so we will use a code watcher.
+	(this only has to be done once on your machine, for all projects)
+	download and config wgo package -> https://github.com/bokwoon95/wgo
+  	% go install github.com/bokwoon95/wgo@latest
+    setup alias in shell settings in .zshrc
+
+	To run project:  
+		wgo run main.go
+		wgo run main.go -port 8000
+
+	To run, watching more file types than just .go files:
+		wgo run -file .gohtml -file .css -file .js main.go
+		wgo run -file .gohtml -file .css -file .js main.go -port 8000
+		
+8. We will inject the chi router into our project to make routing easier
+	https://github.com/go-chi/chi
+  % go get -u github.com/go-chi/chi/v5
+  
+9. We will be using a postgres database.
+	
+	Running on a mac, instead of in a docker image, just run this native app:
+		https://postgresapp.com/
+			download and install it (see docs)
+			Run it, and click the Initialize button
+			Postgres is now running
+			
+	When creating the database, add this extension: (psql: CREATE EXTENSION IF NOT EXISTS "uuid-ossp";)
+	
+	We will also use pgAdmin4, a gui tool for working with postgres databases
+		https://www.pgadmin.org/download/
+			download and launch
+			
+		right click "Servers" in the list bar on the left, select Register->Server
+		In the General tab, set Name = "Local-Dev-Server"
+		in the Connection tab, set the Host Name/address = "localhost"
+			set the Port = 5432
+			set the username = "postgres"
+			set the password to whatever you set it in when initializing the db
+			Click "Save"
+		You should now have "Local-Dev-Server" in the left list box under "Servers"
+			Under this should be "Databases".  Expand Databases to see the default databases
+			Right-click on "Databases" and select Create -> Database
+			In the dialog that opens 
+				on the General tab
+					Database: workouts
+					Owner: postgres
+				on the Definition tab
+					Template: template0
+				Click the Save button
+				
+10. Need a migration tool for go
+	https://github.com/pressly/goose
+		% go install github.com/pressly/goose/v3/cmd/goose@latest
+		% go get github.com/pressly/goose/v3/cmd/goose@latest
+	
+	
+11. We need a package to help with encryption
+  % go get golang.org/x/crypto/bcrypt
+  

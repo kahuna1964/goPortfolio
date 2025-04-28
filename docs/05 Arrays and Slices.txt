@@ -1,0 +1,53 @@
+Arrays and Slices
+=================
+
+Arrays
+------
+
+numbers := [5] int{1, 2, 3, 4, 5}  (array of 5 numbers)
+fmt.Printf("Array of Numbers %v, third item %d, length of numbers %d\n", numbers, numbers[2], len(numbers))
+
+Once defined, you can assign values, but not change the size of the array.
+Arrays or zero based
+
+
+Mult Dimensional Arrays
+-----------------------
+
+matrix := [2][3] int {
+	{1,2,3},
+	{4, 5, 6},
+}
+fmt.Printf("Matrix of Numbers %v\n", matrix)
+
+
+
+Slices
+------
+
+Slices are dynamic arrays (changeable size)
+
+given -> numbers := [5] int{1, 2, 3, 4, 5} 
+
+allNumbers := numbers[:] (copies ALL numbers from numbers to allNumbers)
+allNumbers := numbers[0,3]
+
+
+Use slices as dynamic arrays
+----------------------------
+
+Remember: slices are slower than arrays
+
+fruits := []string{"apple", "banana", "peach"}
+
+fruits = append(fruits, "orange")
+fruits = append(fruits, "kiwi", "strawberry")
+
+moreFruits = []string{"grapes", "lemons"}
+fruits = append(fruits, moreFruits)
+
+
+Delete from a slice
+-------------------
+
+fruit = slices.Delete(fruit, 2, 3) (remove items 2 and 3 from the slice)

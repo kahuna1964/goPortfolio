@@ -1,0 +1,30 @@
+Maps
+====
+
+name/value pairs or an array of named values
+
+capitalCities := map[string]string {
+	"USA": "Washington D.C.",
+	"india": "New Delhi",
+	"UK": "London",
+}
+
+fmt.Println(capitalCities["USA"])
+
+
+Test if an item exists
+----------------------
+
+capital, exists := capitalCities["Germany"]
+if exists {
+	fmt.Println("This is the capital of Germany:", capital)
+} else {
+	fmt.Println("Does not exist")
+}
+
+
+Delete from a map
+-----------------
+
+delete(capitalCities, "UK")
+
